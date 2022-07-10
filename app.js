@@ -129,6 +129,6 @@ if (port == null || port == "") {
   port = 3000;
 }
 
-app.listen(PerformanceTiming, function () {
+app.listen(port, function () {
   console.log("Server started on port successfully");
 });

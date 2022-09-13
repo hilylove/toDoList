@@ -2,6 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: "./config.env" });
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
 
 const app = express();
 
@@ -10,9 +17,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect(
-  "mongodb+srv://ashleylove:Test123@cluster0.xfkw8tz.mongodb.net/test"
-);
+mongoose.connect(DB);
 
 const itemsSchema = {
   name: String,
